@@ -1,0 +1,92 @@
+body{margin:0;background-color: #ffd100;text-align: center;}
+img{width:100%;}
+.clear{clear:both;}
+
+.main{max-width: 640px;margin:0 auto;text-align: center;}
+.main div{margin:0 auto;}
+#index{background: url(bg.jpg) repeat;position: relative;}
+#index-head{width:90%;}
+#index-start{width:40%;position:absolute;bottom:20%;left:30%;}
+#index-end{width:45%;position:absolute;bottom:0%;left: 30%;}
+
+#q{display: none;}
+.q-box{border:5px solid #fff4c2;padding:5%;margin:5% !important;}
+.circle{/*background-color: #fff4c2;*/display: none;}
+.detail{text-align: left;}
+.q-title{font-size:18px;font-weight: bolder;}
+.q-opt{-webkit-padding-start:30px;padding:0;}
+.q-opt li{margin:6% 0;font-size:14px;background: #ffefa3; border-radius:4px;padding:5%;list-style: none}
+.q-opt li a{color:#000;text-decoration: none;}
+.p-title{font-size: 10px;color: #ffffff}
+/*
+.q-opt li:nth-of-type(1){list-style-image:url(li01.png)}
+.q-opt li:nth-of-type(2){list-style-image:url(li11.png)}
+.q-opt li:nth-of-type(3){list-style-image:url(li21.png)}
+.q-opt li:nth-of-type(4){list-style-image:url(li31.png)}
+*/
+
+#progress{margin: 0;padding: 0;padding-top:10%;}
+#progress li{display:inline;}
+.p-circle span{width:16px;height:16px;border-radius: 9px;border:#000 1px solid;display: inline-block;padding: 1px}
+.p-circle img{width:16px;height: 16px;display: none}
+
+#r{display: none;position: relative;}
+#share{position: absolute;top:65%;width:100%;height:20%;}
+#share a{display: block;float:left;width:50%;height: 100%;}
+
+#black{background-color: rgba(0,0,0,.6);position: absolute;top: 0;display: none;}
+
+@media (min-width: 640px){
+	.q-title{
+	/* font-size: 2em; */
+	    font-size: 6vmin;
+	}
+	.q-opt li{    
+	/* font-size: 1.6em;*/
+    font-size: 5vmin;
+    }
+
+	.p-circle span{
+	/* width:26px;height:26px;border-radius: 14px;border:#000 1px solid;display: inline-block;padding: 1px; */
+	    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: #000 1px solid;
+    display: inline-block;
+    padding: 1px;
+	
+	}
+	.p-circle img{
+	/*
+	width:26px;height: 26px;
+	*/
+	width: 35px;
+    height: 35px;
+	}
+}
+
+/*用于擦除效果*/
+.box{
+	position: absolute;display: none;
+	left:0;
+	top:0;
+	bottom:0;
+	right: 0;
+	z-index: 1000;
+	background:url("http://i1.7k7kimg.cn/cms/cms10/20141016/103603_1031.png") no-repeat;
+	background-size: 100% 100%;
+	backface-visibility: hidden;
+	overflow: hidden;
+}
+#cas{
+	width: 100%;
+	height: 100%;
+	opacity: 1;
+	-webkit-transition:opacity .5s;
+	-ms-transition:opacity .5s;
+	-moz-transition:opacity .5s;
+}
+
+.noOp{
+	opacity: 0 !important;
+}
