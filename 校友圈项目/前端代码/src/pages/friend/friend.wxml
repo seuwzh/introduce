@@ -1,0 +1,43 @@
+<view class="container padding-t-md">
+  <view class="card">
+    <view class="card-header">消息通知</view>
+    <view class="card-block">
+      <NoticeItem bindtap="handleClickCard" />
+      <view
+        class="padding-t-md padding-b-md text-center"
+        bindtap="handleToNotice"
+      >
+        <text class="h3 link">查看更多消息 (6)</text>
+      </view>
+    </view>
+  </view>
+  <view class="card">
+    <view class="card-header">我的朋友</view>
+    <view wx:if="{{friendList.length}}" class="card-block">
+      <view
+        wx:for="{{friendList}}"
+        class="flex-align-center padding-t-lg padding-b-lg border-b tap"
+        bindtap="handleClickCard"
+      >
+        <!--<image class="avatar" src="{{item.head_url}}" />-->
+        <view class="flex-item padding-l-lg">
+          <view class="h1 text-strong padding-b-sm">
+            <text>{{item.real_name}}</text>
+          </view>
+          <view>{{item.company}}－{{item.job}}</view>
+        </view>
+        <view class="self-top">
+          <icon class="icon-location" />
+          <text class="text-muted">{{item.location}}</text>
+        </view>
+      </view>
+    </view>
+    <view wx:else class="card-block padding-b-xl text-center">
+      <image
+        class="friend-empty margin-t-xl margin-b-xl"
+        src="../../images/friend-empty.png"
+      />
+      <view class="h4 text-primary">暂无朋友，快去交换名片吧</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,36 @@
+@import "variables";
+
+page {
+  font-size: 24rpx;
+  color: $main-color;
+  background-color: $ground-color;
+}
+
+text {
+  vertical-align: middle;
+}
+
+button {
+  color: $muted-color;
+  border-radius: 0;
+  background-color: white;
+  &::after {
+    border-color: rgba(black, .08);
+    border-radius: 0;
+  }
+  &[type=primary] {
+    background-color: $theme-color;
+    &.button-hover {
+      background-color: darken($theme-color, 10%);
+    }
+
+    &[plain] {
+      color: $theme-color;
+      border-color: $theme-color;
+      &.button-hover {
+        color: lighten($theme-color, 16%);
+        border-color: lighten($theme-color, 16%);
+      }
+    }
+  }
+}
