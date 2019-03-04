@@ -1,0 +1,191 @@
+/* pages/index/index.wxss */
+/* pages/home/index.wxss */
+page, .loading-container, .container {
+  height: 100%;
+}
+.loading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.loading-title {
+  font-size: 18px;
+  font-weight: 200;
+}
+.container{
+width: 100%;
+height: 100%;
+overflow-x: hidden;
+overflow-y: scroll;
+}
+swiper{
+  width: 100%;
+  height: 400rpx;
+}
+.slide-image{
+   width: 100%;
+   height: 100%;
+   display: inline-block;
+   overflow: hidden;
+}
+.near{
+   width: 100%;
+   height: 150px;
+}
+.section{
+  width: 100%;
+  height: 500rpx;
+}
+.section__title{
+  padding-top: 12rpx;
+  width:100%;
+  height:80rpx;
+  line-height:80rpx;
+  position: relative;
+  text-align: center;
+  font-size: 35rpx;
+  color:#A9A9A9;
+}
+.section__title::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 12rpx;
+  background:	#eeeeee;
+}
+.scroll-view_H{
+  height:500rpx;
+  white-space: nowrap;
+  display: flex;
+
+}
+.scroll-view-item_H{
+  width:250rpx;
+  height:400rpx;
+  margin-right: 10rpx;
+  margin-left: 10rpx;
+  display: inline-block;
+  box-shadow: 5px 5px 20px -5px #DDD;
+  border-radius: 4%;
+}
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+.scroll-image{
+  width:250rpx;
+  height:250rpx;
+  display: block;
+  border-radius: 4% 4% 0% 0%;
+  box-shadow: 5px 5px 20px -5px #DDD;
+  }
+.scroll-view-item_H .content{
+  width: 250rpx;
+  height: 150rpx;
+}
+.title{
+  margin-top: 20rpx;
+  height:40rpx;
+  line-height:30rpx;
+  font-size: 15rpx;
+  text-align: center;
+  font-weight: 400;
+  color:#A8A8A8;
+}
+.scroll-view-item-AT{
+  margin-top: 20rpx;
+  width: 100%;
+  height: 40rpx;
+  font-size: 11px;
+  color:#bfbfbf;
+
+}
+.area{
+  float: left;
+  width: 60rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+}
+.day{
+  float:left;
+  width: 60rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+}
+.scroll-view-item-cf{
+  width: 100%;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 26rpx;
+  color:#A8A8A8;
+}
+.camerist_avatar{
+  float: left;
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+.camerist_name{
+  float: left;
+  margin-left: 20rpx;
+  width: 50rpx;
+  height: 40rpx;
+  line-height: 90rpx;
+  vertical-align: middle;
+  font-size: 28rpx;
+
+}
+.fee{
+  float: right;
+  width: 100rpx;
+  height: 50rpx;
+  line-height: 90rpx;
+  font-size: 28rpx;
+  word-wrap:break-word;
+}
+.more{
+ position: relative;
+ width: 100%;
+ height: 100rpx;
+ line-height: 100rpx;
+ text-align: center;
+ font-size: 14px;
+  color:#A8A8A8;
+  vertical-align: middle;
+}
+.more image{
+  height: 40rpx;
+  width: 40rpx;
+  line-height: 40rpx;
+  margin-left: 20rpx;
+  vertical-align: middle;
+}
+.more::after{
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 12rpx;
+  background:#eeeeee;
+}
+.near{
+  width: 100%;
+  height: 300rpx;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+.nimage{
+  width: 750rpx;
+  height: 300rpx;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+}

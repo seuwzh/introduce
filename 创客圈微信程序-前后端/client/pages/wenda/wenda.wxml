@@ -1,0 +1,37 @@
+<block wx:if="{{show_page}}">
+  <view>
+  <navigator url="/pages/fdback/fdback" hover-class="navigator-hover" class="con-item">
+  <image class="add_icon" src="/image/icon.png">
+  </image>
+  </navigator>
+  </view>
+  <block wx:for="{{data.user}}" wx:key="{{item}}">
+    <navigator url="../wenda-page/wenda-page?id={{item.id}}" class="q-item">
+      <view class="q-right">
+        <view class="q-info">
+          <view class="q-man">
+            <image src="{{item.image}}" class="q-avatar"></image>
+            <view class="q-asker">
+            <text class="name">{{item.name}}</text>
+            <text class="title">{{item.title}}</text>
+            </view>
+          </view>
+          <view class="q-time">{{item.time}}</view>
+        </view>
+        <view class="q-title" bindtap="goDetail">{{item.else}}</view>
+        <view class="from-line">
+          <view class="from-left"><text class="">{{item.else}}</text></view>
+        </view>
+      </view>
+    </navigator>
+    <view class="border-b"></view>
+    <view class="clear"></view>
+  </block>
+  <view class="no_more" wx:if="{{more}}">{{more_data}}</view>
+  <view class="no_more" wx:if="{{no_more}}">{{more_data}}</view>
+  <view class="no_data" wx:if="{{no_data}}">
+    <image class="no_data_icon" src="../../assets/images/no_data.png"></image>
+    <view class="no_data_text">暂无数据！</view>
+
+  </view>
+</block>

@@ -1,0 +1,18 @@
+.section {
+    width: 100%;
+    padding: 0 10px;
+}
+.discover-image {
+    display: flex;
+    margin-bottom: 10px;
+}
+.discover-image-two {
+    display: flex;
+    justify-content: space-between;
+}
+.clear{
+  display: flex;
+  flex-direction: column;
+  height:15rpx;
+  background: #ffffff;
+}

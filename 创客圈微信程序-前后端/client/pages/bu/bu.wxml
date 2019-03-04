@@ -1,0 +1,8 @@
+<view class="clear"></view>
+<view class="section">
+  <view wx:for="{{imgList}}" wx:key="{{item}}">
+    <image src="{{item}}" class="discover-image"
+      style="width:{{systemInfo.windowWidth-20}}px;height: {{(systemInfo.windowWidth-20)/2.742}}px;">
+    </image>
+  </view>
+</view>

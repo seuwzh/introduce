@@ -1,0 +1,50 @@
+<view class="page">
+	<view class="page__hd">还青春，一个奋不顾身</view>
+	<view class="page__bd">
+		<!-- <view class="weui-cells__title">表单</view> -->
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">姓名</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请填写真实姓名"/>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">性别</view>
+                </view>
+                <view class="weui-cell__bd">
+					<radio-group class="radio-group" bindchange="radioChange">
+					  <label class="radio weui-input">
+					    男<radio color="#39c3f2" value="{{item.name}}" checked="{{item.checked}}"/>
+					    女<radio color="#39c3f2" value="{{item.name}}" checked="{{item.checked}}"/>
+					  </label>
+					</radio-group>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input weui-cell_vcode">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">学号</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请填写真实学号" />
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input weui-cell_vcode">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">电话</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请填写真实电话" />
+                </view>
+            </view>
+
+        </view>
+        <view class="btn">
+			<button class="weui-btn" type="primary">确认</button>
+        </view>
+	</view>
+	<view class="page__ft"></view>
+</view>

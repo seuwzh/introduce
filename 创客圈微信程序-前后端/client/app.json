@@ -1,0 +1,38 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/signup/discover",
+    "pages/wenda/wenda",
+    "pages/bu/bu",
+    "pages/actionlist/actionlist",
+    "pages/fdback/fdback",
+    "pages/per-info/per-info"
+  ],
+  "window": {
+    "backgroundColor": "#000000",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#000000",
+    "navigationBarTitleText": "东大创协",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#888",
+    "selectedColor": "#000000",
+    "backgroundColor": "#fff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "image/c1.png",
+        "selectedIconPath": "image/c2.png"
+      },
+      {
+        "pagePath": "pages/signup/discover",
+        "text": "发现创协",
+        "iconPath": "image/d1.png",
+        "selectedIconPath": "image/d2.png"
+      }
+    ]
+  }
+}
