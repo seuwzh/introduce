@@ -1,0 +1,415 @@
+swagger: '2.0'
+info:
+  description: '校友圈微信小程序接口，前面加https://www.zimotiontec.cn/weapp/'
+  version: 2.0.0
+  title: Wechat Applet Swagger
+tags:
+  - name: Edit
+    description: 编辑/插入信息
+  - name: Query
+    description: 获取信息
+  - name: Search
+    description: 搜索信息
+  - name: Friend
+    description: 朋友链
+  - name: Home
+    description: 消息列表
+paths:
+  /edit/editbase:
+    post:
+      tags:
+        - Edit
+      summary: 用于更新基本信息&若第一次则插入（自动检查是否第一次）
+      description: 第一次编辑信息和之后编辑信息只用一个页面一个请求就可以
+      parameters:
+        - in: body
+          name: body
+          description: 基本信息，填写完整才能提交
+          required: true
+          schema:
+            $ref: '#/definitions/Edit_Body'
+      responses:
+        '200':
+          description: OK
+  /edit/addeducation:
+    post:
+      tags:
+        - Edit
+      summary: 增加一条教育经历
+      description: 增加一条教育经历
+      parameters:
+        - in: body
+          name: body
+          description: 忽略id（后端自动生成该标识），start_year和end_year按照xxxx-xx-xx形式提交
+          required: true
+          schema:
+            $ref: '#/definitions/Education'
+      responses:
+        '200':
+          description: OK
+  /edit/addwork:
+    post:
+      tags:
+        - Edit
+      summary: 增加一条工作经历
+      description: 增加一条工作经历
+      parameters:
+        - in: body
+          name: body
+          description: 忽略id（后端自动生成该标识），start_year和end_year按照xxxx-xx-xx形式提交
+          required: true
+          schema:
+            $ref: '#/definitions/Work'
+      responses:
+        '200':
+          description: OK
+  '/query/getall/{openid}':
+    get:
+      tags:
+        - Query
+      summary: 基于openid获得当前用户的全部信息（调试用）
+      parameters:
+        - name: openid
+          in: path
+          description: 当前用户的openid
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Getall_Res'
+  '/query/geteducation/{openid}':
+    get:
+      tags:
+        - Query
+      summary: 基于openid获得当前用户的教育经历
+      parameters:
+        - name: openid
+          in: path
+          description: 当前用户微信OpenID
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Education'
+  '/query/getwork/{openid}':
+    get:
+      tags:
+        - Query
+      summary: 基于openid获得当前用户的工作经历
+      parameters:
+        - name: openid
+          in: path
+          description: 当前用户微信OpenID
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Work'
+  '/search/searchdirect/{content}':
+    get:
+      tags:
+        - Search
+      summary: 直接搜索
+      description: CI框架不支持URL中有中文，暂时content需要在请求时完成encode
+      parameters:
+        - name: content
+          in: path
+          description: >-
+            搜索“姓名”，“学校”，“专业”，“岗位”，“公司”有相同文本的内容，分类返回（content需要请求时完成encode，暂时不支持模糊搜索和多维度搜索）
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Search_Res'
+  '/search/search/{content}/{way}':
+    get:
+      tags:
+        - Search
+      summary: 根据搜索选项搜索
+      description: 以姓名、学校、城市、公司、职位、五个选项进行搜索
+      parameters:
+        - name: content
+          in: path
+          description: '需要搜索的内容,需要编码，不能中文'
+          required: true
+          type: string
+        - name: way
+          in: path
+          description: 以1-5数字代表各选项
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Education'
+  '/friend/getallfriend/{openid}':
+    get:
+      tags:
+        - Friend
+      summary: 获取此用户朋友全部信息（调试用）
+      description: 获取全部朋友链信息（朋友、申请中、被申请中）
+      parameters:
+        - name: openid
+          in: path
+          description: 当前用户openid
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Friend_Res'
+  '/friend/getfriend/{openid}':
+    get:
+      tags:
+        - Friend
+      summary: 获取朋友列表
+      description: 获取已经获得好友的信息，返回包括私人信息在内的全部内容
+      parameters:
+        - name: openid
+          in: path
+          description: 当前用户openid
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Friendlist_Res'
+  '/friend/getinform/{openid}':
+    get:
+      tags:
+        - Friend
+      summary: 获取消息列表
+      description: 获取消息列表-被拒绝，被同意，被申请
+      parameters:
+        - name: openid
+          in: path
+          description: 当前用户openid
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Friendlist_Res'
+  '/friend/invite/{openid}/{friendid}':
+    get:
+      tags:
+        - Friend
+      summary: 申请交换名片（加为好友）
+      description: 获取消息列表-被拒绝，被同意，被申请
+      parameters:
+        - name: openid
+          in: path
+          description: 当前用户openid
+          required: true
+          type: string
+        - name: friendid
+          in: path
+          description: 当前用户openid
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Friendlist_Res'
+definitions:
+  PersonalInfor:
+    type: object
+    properties:
+      ID:
+        type: string
+      openid:
+        type: string
+      head_url:
+        type: string
+      gender:
+        type: integer
+      descr:
+        type: string
+      city:
+        type: string
+      real_name:
+        type: string
+      vocation:
+        type: string
+  Personal:
+    type: object
+    properties:
+      openid:
+        type: string
+      phone:
+        type: string
+      wechat:
+        type: string
+      email:
+        type: string
+  Education:
+    type: object
+    properties:
+      id:
+        type: number
+      openid:
+        type: string
+      school:
+        type: string
+      background:
+        type: string
+      department:
+        type: string
+      profession:
+        type: string
+      start_year:
+        type: integer
+        format: xxxx-xx-xx
+      end_year:
+        type: integer
+        format: xxxx-xx-xx
+  Work:
+    type: object
+    properties:
+      id:
+        type: number
+      openid:
+        type: string
+      company:
+        type: string
+      job:
+        type: string
+      start_year:
+        type: integer
+      end_year:
+        type: integer
+  Friend:
+    description: 朋友列表项
+    type: object
+    properties:
+      ID:
+        type: string
+      head_url:
+        type: string
+      real_name:
+        type: string
+      location:
+        type: string
+      company:
+        type: string
+      job:
+        type: string
+  Getall_Res:
+    description: 基于openid直接查询结果
+    type: object
+    properties:
+      Base:
+        type: array
+        items:
+          $ref: '#/definitions/PersonalInfor'
+      Education:
+        type: array
+        items:
+          $ref: '#/definitions/Education'
+      Work:
+        type: array
+        items:
+          $ref: '#/definitions/Work'
+      Personal:
+        type: array
+        items:
+          $ref: '#/definitions/Personal'
+      Friend:
+        type: array
+        items:
+          $ref: '#/definitions/Friend'
+  Edit_Body:
+    description: 编辑时post内容
+    type: object
+    properties:
+      openid:
+        type: string
+      head_url:
+        type: string
+      gender:
+        type: string
+      descr:
+        type: string
+      city:
+        type: string
+      real_name:
+        type: string
+      vocation:
+        type: string
+      phone:
+        type: string
+      wechat:
+        type: string
+      email:
+        type: string
+  Search_Res:
+    description: 基于openid直接查询结果
+    type: object
+    properties:
+      real_name:
+        type: array
+        items:
+          $ref: '#/definitions/PersonalInfor'
+      school:
+        type: array
+        items:
+          $ref: '#/definitions/Education'
+      company:
+        type: array
+        items:
+          $ref: '#/definitions/Work'
+      job:
+        type: array
+        items:
+          $ref: '#/definitions/Work'
+      education:
+        type: array
+        items:
+          $ref: '#/definitions/Education'
+  Friend_Res:
+    description: 基于openid搜索friend结果
+    type: object
+    properties:
+      Friend:
+        type: array
+        items:
+          $ref: '#/definitions/PersonalInfor'
+      Inviting:
+        type: array
+        items:
+          $ref: '#/definitions/PersonalInfor'
+      Invited:
+        type: array
+        items:
+          $ref: '#/definitions/PersonalInfor'
+  Friendlist_Res:
+    description: 基于openid搜索friend结果
+    type: object
+    properties:
+      Friend:
+        type: array
+        items:
+          $ref: '#/definitions/PersonalInfor'
